@@ -128,6 +128,22 @@ class SLinkedList:
             return index
         else:
             return None
+        
+    def index(self, index):
+        if index >= self.len:
+            raise IndexError('Cannot peek beyond indexable length of list')
+        if index < 0:
+            raise IndexError('Invalid Index, must be greater or equal to 0 and less that length of list')
+        temp = self.head
+        count = 0
+        while temp.next is not None:
+            if index == count:
+                return temp.data
+            temp = temp.next
+            count += 1
+        count += 1
+        if index == count:
+            return temp.data
 
     def print_sll(self):
         temp = self.head
@@ -141,15 +157,51 @@ class SLinkedList:
             data_str += f'->{temp.data}'
             print(data_str[2:])
 
-sll = SLinkedList()
 
-sll.add(50)
-sll.add(60)
-sll.add(70)
-sll.add(80)
-sll.add(90)
-sll.print_sll()
-sll.remove(0)
-sll.print_sll()
-# index = sll.search(40)
-# print(sll.len)
+class DLinkedList:
+    """My personal implementation of a doubly linked list.
+    """
+
+    def __init__(self):
+        self.head = Node()
+        self.len = 0
+
+    def add(self, data):
+        temp_node = Node(data)
+        temp = self.head
+        if temp.data == None:
+            self.head.data = data
+        else:
+            while temp.next is not None:
+                temp = temp.next
+            temp.next = temp_node
+            temp_node.prev = self.head
+        self.len += 1
+
+    def print_dll(self):
+        temp = self.head
+        data_str = ''
+        if temp.next is None:
+            print(temp.data)
+        else:
+            while temp.next is not None:
+                data_str += f'<->{temp.data}'
+                temp = temp.next
+            data_str += f'<->{temp.data}'
+            print(data_str[3:])
+
+    def index(self, index):
+        if index >= self.len:
+            raise IndexError('Cannot peek beyond indexable length of list')
+        if index < 0:
+            raise IndexError('Invalid Index, must be greater or equal to 0 and less that length of list')
+        temp = self.head
+        count = 0
+        while temp.next is not None:
+            if index == count:
+                return temp
+            temp = temp.next
+            count += 1
+        count += 1
+        if index == count:
+            return temp
