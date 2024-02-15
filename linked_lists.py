@@ -24,7 +24,7 @@ class Node:
             self.prev_id = None
 
     def __str__(self):
-        return f'{self.prev_id}<--{self.data}-->{self.next_id}'
+        return f'{self.prev.data}<--{self.data}-->{self.next.data}'
     
     def data(self):
         return f'{self.data}'
@@ -37,6 +37,46 @@ class SLinkedList:
     def __init__(self):
         self.head = Node()
         self.len = 0
+        self.iter_count = 0
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.iter_count < self.len:
+            node = self.index(self.iter_count)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            self.iter_count += 1
+            return node
+        else:
+            # self.iter_count = 0
+            raise StopIteration
 
     def add(self, data):
         temp_node = Node(data)
@@ -141,7 +181,6 @@ class SLinkedList:
                 return temp.data
             temp = temp.next
             count += 1
-        count += 1
         if index == count:
             return temp.data
 
@@ -174,9 +213,27 @@ class DLinkedList:
         else:
             while temp.next is not None:
                 temp = temp.next
+            temp_node.prev = temp
             temp.next = temp_node
-            temp_node.prev = self.head
         self.len += 1
+
+    def search(self, data):
+        temp = self.head
+        index = 0
+        if temp.data is None and temp.next is None:
+            raise IndexError('Empty list')
+        if temp.data == data:
+            return index
+        while temp.next is not None:
+            temp = temp.next
+            index += 1
+            if temp.data == data:
+                return index
+        index += 1
+        if temp.data == data:
+            return index
+        else:
+            return None
 
     def print_dll(self):
         temp = self.head

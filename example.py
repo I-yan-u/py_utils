@@ -5,16 +5,29 @@ Example of linked list implementation
 """
 from linked_lists import SLinkedList, DLinkedList
 
-dll = DLinkedList()
+sll = SLinkedList()
 
-dll.add(50)
-dll.add(60)
-dll.add(70)
-dll.add(80)
-dll.add(90)
-dll.print_dll()
-data4 = dll.index(3)
-print(data4.prev)
+sll.add(50)
+sll.add(60)
+sll.add(70)
+sll.add(80)
+sll.add(90)
+sll.add(150)
+sll.add(160)
+sll.add(170)
+sll.add(180)
+sll.add(190)
+
+for x in sll:
+    print(x)
+
+sll.print_sll()
+# data2 = dll.index(1)
+# data3 = dll.index(2)
+# data4 = dll.index(3)
+# print(data2)
+# print(data3)
+# print(data4)
 
 # sll = SLinkedList()
 
