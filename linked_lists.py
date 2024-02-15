@@ -32,6 +32,11 @@ class Node:
 
 class SLinkedList:
     """My personal implementation of a singly linked list.
+
+    Attributes:
+        head (Node): The head node of the linked list.
+        len (int): The length of the linked list.
+        iter_count (int): The count used for iteration over the linked list.
     """
 
     def __init__(self) -> None:
@@ -185,8 +190,22 @@ class SLinkedList:
 
 class DLinkedList:
     """My personal implementation of a doubly linked list.
-    """
 
+    Attributes:
+        head (Node): The head node of the linked list.
+        len (int): The length of the linked list.
+        iter_count (int): The current iteration count for iterating over the linked list.
+
+    Methods:
+        __init__(): Initializes a new instance of the DLinkedList class.
+        __iter__(): Returns the iterator object for the linked list.
+        __next__(): Returns the next node in the iteration.
+        add(data: str): Adds a new node with the specified data to the end of the linked list.
+        search(data: str) -> Optional[int]: Searches for the first occurrence of the specified data in the linked list.
+        print_dll(): Prints the data of all nodes in the linked list.
+        index(index: int) -> Node: Returns the node at the specified index in the linked list.
+    """
+    
     def __init__(self) -> None:
         self.head = Node()
         self.len = 0
@@ -201,7 +220,6 @@ class DLinkedList:
             self.iter_count += 1
             return node
         else:
-            # self.iter_count = 0
             raise StopIteration
 
     def add(self, data: str) -> None:
@@ -250,7 +268,7 @@ class DLinkedList:
         if index >= self.len:
             raise IndexError('Cannot peek beyond indexable length of list')
         if index < 0:
-            raise IndexError('Invalid Index, must be greater or equal to 0 and less that length of list')
+            raise IndexError('Invalid Index, must be greater or equal to 0 and less than the length of the list')
         temp = self.head
         count = 0
         while temp.next is not None:
