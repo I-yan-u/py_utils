@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
-""" Personal linked list implementation """
-
+from typing import Optional
 
 class Node:
     """Data structure
     """
     id = 0
-    def __init__(self, data=None, prev=None, next=None) -> None:
+    def __init__(self, data: Optional[str] = None, prev: Optional['Node'] = None, next: Optional['Node'] = None) -> None:
         Node.id += 1
         self.id = f'n-{Node.id}'
         self.data = data
@@ -23,12 +21,12 @@ class Node:
             self.prev = None
             self.prev_id = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         prev = self.prev.data if self.prev != None else None
         next = self.next.data if self.next != None else None
         return f'{prev}<--{self.data}-->{next}'
     
-    def data(self):
+    def data(self) -> str:
         return f'{self.data}'
     
 
@@ -36,7 +34,7 @@ class SLinkedList:
     """My personal implementation of a singly linked list.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.head = Node()
         self.len = 0
         self.iter_count = 0
@@ -53,7 +51,7 @@ class SLinkedList:
             # self.iter_count = 0
             raise StopIteration
 
-    def add(self, data):
+    def add(self, data: str) -> None:
         temp_node = Node(data)
         temp = self.head
         if temp.data == None:
@@ -64,7 +62,7 @@ class SLinkedList:
             temp.next = temp_node
         self.len += 1
     
-    def pop(self):
+    def pop(self) -> None:
         if self.head.data is None and self.head.next is None:
             raise IndexError('Cannot pop from an empty list')
         if self.head.next is None:
@@ -79,7 +77,7 @@ class SLinkedList:
             temp.data = None
         self.len -= 1
 
-    def insert(self, data, index):
+    def insert(self, data: str, index: int) -> None:
         if index > self.len:
             raise IndexError('Cannot insert beyond indexable length of list')
         if index < 0:
@@ -103,7 +101,7 @@ class SLinkedList:
                 temp1.next = temp
         self.len += 1
 
-    def remove(self, index):
+    def remove(self, index: int) -> None:
         if index >= self.len:
             raise IndexError('Cannot delete beyond indexable length of list')
         if index < 0:
@@ -126,7 +124,7 @@ class SLinkedList:
                 temp3.next = None
         self.len += 1
 
-    def search(self, data):
+    def search(self, data: str) -> Optional[int]:
         temp = self.head
         index = 0
         if temp.data is None and temp.next is None:
@@ -144,7 +142,7 @@ class SLinkedList:
         else:
             return None
         
-    def index(self, index):
+    def index(self, index: int) -> Node:
         if index >= self.len:
             raise IndexError('Cannot peek beyond indexable length of list')
         if index < 0:
@@ -159,7 +157,7 @@ class SLinkedList:
         if index == count:
             return temp
         
-    def reverse(self):
+    def reverse(self) -> None:
         prev = None
         current = self.head
         while current is not None:
@@ -169,10 +167,10 @@ class SLinkedList:
             current = next
         self.head = prev
 
-    def reversed(self):
+    def reversed(self) -> None:
         ...
 
-    def print_sll(self):
+    def print_sll(self) -> None:
         temp = self.head
         data_str = ''
         if temp.next is None:
@@ -189,7 +187,7 @@ class DLinkedList:
     """My personal implementation of a doubly linked list.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.head = Node()
         self.len = 0
         self.iter_count = 0
@@ -206,7 +204,7 @@ class DLinkedList:
             # self.iter_count = 0
             raise StopIteration
 
-    def add(self, data):
+    def add(self, data: str) -> None:
         temp_node = Node(data)
         temp = self.head
         if temp.data == None:
@@ -218,7 +216,7 @@ class DLinkedList:
             temp.next = temp_node
         self.len += 1
 
-    def search(self, data):
+    def search(self, data: str) -> Optional[int]:
         temp = self.head
         index = 0
         if temp.data is None and temp.next is None:
@@ -236,7 +234,7 @@ class DLinkedList:
         else:
             return None
 
-    def print_dll(self):
+    def print_dll(self) -> None:
         temp = self.head
         data_str = ''
         if temp.next is None:
@@ -248,7 +246,7 @@ class DLinkedList:
             data_str += f'<->{temp.data}'
             print(data_str[3:])
 
-    def index(self, index):
+    def index(self, index: int) -> Node:
         if index >= self.len:
             raise IndexError('Cannot peek beyond indexable length of list')
         if index < 0:
