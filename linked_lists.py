@@ -44,34 +44,7 @@ class SLinkedList:
     
     def __next__(self):
         if self.iter_count < self.len:
-            node = self.index(self.iter_count)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+            node = self.index(self.iter_count)    
             self.iter_count += 1
             return node
         else:
