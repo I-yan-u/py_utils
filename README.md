@@ -17,19 +17,15 @@ git clone https://github.com/username/py_utils.git# py_utils
 ## Usage
 Here is an example of how to use the SLinkedList class:
 
+```python
 from py_utils import linked_lists
 
 sll = linked_lists.SLinkedList()
 sll.add('data')
 print(sll.index(0))  # prints 'data'
-
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-MIT
-
-```
 
 Please replace `username` with your actual GitHub username in the `git clone` command
