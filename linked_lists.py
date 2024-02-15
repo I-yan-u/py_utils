@@ -24,7 +24,9 @@ class Node:
             self.prev_id = None
 
     def __str__(self):
-        return f'{self.prev.data}<--{self.data}-->{self.next.data}'
+        prev = self.prev.data if self.prev != None else None
+        next = self.next.data if self.next != None else None
+        return f'{prev}<--{self.data}-->{next}'
     
     def data(self):
         return f'{self.data}'
@@ -151,11 +153,24 @@ class SLinkedList:
         count = 0
         while temp.next is not None:
             if index == count:
-                return temp.data
+                return temp
             temp = temp.next
             count += 1
         if index == count:
-            return temp.data
+            return temp
+        
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
+    def reversed(self):
+        ...
 
     def print_sll(self):
         temp = self.head
@@ -177,6 +192,19 @@ class DLinkedList:
     def __init__(self):
         self.head = Node()
         self.len = 0
+        self.iter_count = 0
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.iter_count < self.len:
+            node = self.index(self.iter_count)    
+            self.iter_count += 1
+            return node
+        else:
+            # self.iter_count = 0
+            raise StopIteration
 
     def add(self, data):
         temp_node = Node(data)
@@ -232,6 +260,5 @@ class DLinkedList:
                 return temp
             temp = temp.next
             count += 1
-        count += 1
         if index == count:
             return temp
