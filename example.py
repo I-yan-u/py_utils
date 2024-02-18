@@ -38,13 +38,20 @@ sll.add(160)
 sll.add(170)
 sll.add(180)
 sll.add(190)
+sll.add(50)
+sll.add(60)
+sll.add(70)
+sll.add(80)
+sll.add(90)
+sll.add(150)
+sll.add(160)
+sll.add(170)
+sll.add(180)
+sll.add(190)
 
-sll.reverse()
+new_sll = sll.reversed()
 sll.print_sll()
-
-# for x in sll.reversed_iterator():
-#     if x.data == 90:
-#         print(x.next.data)
+new_sll.print_sll()
+print(new_sll.len)
 
 print(f'Elapsed time: {time.perf_counter() - start:.6f} seconds')
-# sll.print_sll()

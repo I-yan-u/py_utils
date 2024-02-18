@@ -56,6 +56,9 @@ class SLinkedList:
             # self.iter_count = 0
             raise StopIteration
 
+    def len(self) -> int:
+        return self.len
+
     def add(self, data: str) -> None:
         temp_node = Node(data)
         temp = self.head
@@ -173,7 +176,14 @@ class SLinkedList:
         self.head = prev
 
     def reversed(self) -> None:
-        ...
+        len = self.len
+        temp = self.head
+        new = SLinkedList()
+        for i in range(len, 0, -1):
+            temp = self.index(i-1)
+            new.add(temp.data)
+        return new
+
 
     def print_sll(self) -> None:
         temp = self.head
